@@ -1,0 +1,12 @@
+# Showcase fork only (never part of an upstream pull request).
+version: 1
+app:
+  install: "npm ci --include=dev && NODE_ENV=production npm run storybook:build"
+  start: python3 -m http.server {port} --bind 0.0.0.0 --directory storybook-static
+  url: http://localhost:{port}
+  readyPath: /iframe.html
+  readyStatus: 200
+  runtime: node24
+demo:
+  maxVideos: 1
+  beforePass: true
